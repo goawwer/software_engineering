@@ -24,3 +24,4 @@
 ## Работа №1 
 ### Установка Git
 
+![Меню]https://github.com/goawwer/software_engineering/blob/%D0%A2%D0%B5%D0%BC%D0%B0_1/pic/1.1.png

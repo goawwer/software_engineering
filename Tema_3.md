@@ -26,6 +26,13 @@
 
 ```python
 
+a = int(input())
+b = int(input())
+
+if a > b:
+    print('Выполняется')
+else:
+    print('Не выполняется')
 
 
 ```
@@ -39,7 +46,18 @@
 
 ```python
 
+x = int(input())
 
+if x < 0:
+    print('Число меньше 0')
+elif x == 0:
+    print('Число равно 0')
+elif 0 < x < 10:
+    print('Число больше 0, но меньше 10')
+elif x == 10:
+    print('Число равно 10')
+else:
+    print('Число больше 10')
 
 ```
 ### Результат.
@@ -52,7 +70,13 @@
 
 ```python
 
+numbers = [1, 22, 53, 14]
+number = int(input())
 
+if number in numbers:
+    print('Число есть в массиве!')
+else:
+    print('Числа нет в массиве...')
 
 ```
 ### Результат.
@@ -65,6 +89,16 @@
 
 ```python
 
+numbers = [2, 31, 65, 95, 210]
+
+x = int(input())
+if x in numbers:
+    if x % 2 == 0:
+        print('Это число в массиве и четное')
+    else:
+        print('Число в массиве, но нечетное')
+else:
+    print('Число не в массиве')
 
 
 ```
@@ -78,6 +112,20 @@
 
 ```python
 
+for i in range (10):
+    print('i= ', i)
+    if i == 0:
+        i += 2
+    if i == 1:
+        continue
+    if i == 2 or i == 3:
+        print('Число равно 2 или 3')
+    elif i in [4, 5, 6]:
+        continue
+    elif i in [7, 8, 9]:
+        print('Переменная 7, 8 или 9')
+    else:
+        break
 
 
 ```

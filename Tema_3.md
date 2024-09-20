@@ -197,6 +197,13 @@ while x > 0:
 
 ```python
 
+for i in range(3):
+    for j in range(3):
+        if i == j:
+            print(i, j, 'Совпадение')
+        else: 
+            print(i, j, 'Числа разные')
+      
 
 
 ```

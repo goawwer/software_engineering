@@ -309,7 +309,22 @@ else:
 
 ```python
 
+x = input()
+y = str.lower(x)
+list = y.split()
 
+print(len(x))
+
+print(y)
+
+print('a =', y.count('a'), 'e =', y.count('e'), 'i =', y.count('i'), 'o =', y.count('o'), 'u =', y.count('u'))
+
+print(x.replace('ugly','beauty'))
+
+if list[0] == 'the' or list[-1] == 'end':
+  print('Предложение начинается на <The> или оканчивается на <end>')
+else: 
+  print('В предложении нет <The> или <end>')
 
 ```
 
@@ -325,7 +340,13 @@ else:
 
 ```python
 
-
+count = 0
+for i in ('hello world'):
+  count += 1
+  if count % 2 == 0:
+    print('hello')
+  else:
+    print('hello world')
 
 ```
 

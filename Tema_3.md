@@ -216,6 +216,19 @@ for i in range(3):
 
 ```python
 
+flag = False 
+
+N = [2, 4, 6, 9, 10]
+
+for i in N:
+  if i % 2 == 0:
+    Flag = False
+    print('Число чётное')
+  else: 
+    Flag = True 
+    print(Flag, 'Число нечётное')
+    break
+
 
 
 ```
@@ -230,7 +243,13 @@ for i in range(3):
 
 ```python
 
+x = 1 
 
+for i in range(2):
+  x *= 5
+  x += 1
+
+print(x)
 
 ```
 

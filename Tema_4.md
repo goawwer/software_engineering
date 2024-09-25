@@ -147,12 +147,13 @@ if __name__ == "__main__":
 ### Создайте дополнительный файл .py. Напишите в нем любую функцию, которая будет что угодно выводить в консоль, но не вызывайте её в нём. Откройте файл main.py импортируйте в него функцию из нового файла и при помощи "точки входа" вызовите эту функцию.
 
 ```python
+
 # модуль
+
 def summa(*args):
   return sum(args)
 
 # main
-
 from add import summa 
 
 if __name__ == '__main__':
@@ -165,14 +166,22 @@ if __name__ == '__main__':
 
 
 ## Лабораторная работа №8
-### 
+### Напишите программу, которая будет выводить корень, синус, косинус полученного от пользователя числа.
 
 ```python
 
-import math 
+from math import sqrt, sin , cos
 
-x = int(input())
-print(f'корень равен: {math.sqrt(x)}, синус равен: {math.sin(x)}, косинус равен: {math.cos(x)}')
+
+def main():
+  x = int(input("Введите число: "))
+  print(f'Корень числа: {sqrt(x)}')
+  print(f'Синус числа: {sin(x)}')
+  print(f'Косинус числа: {cos(x)}')
+
+if __name__ == '__main__':
+  main()
+
 
 ```
 ### Результат.
@@ -180,10 +189,31 @@ print(f'корень равен: {math.sqrt(x)}, синус равен: {math.si
 
 
 ## Лабораторная работа №9
-### 
+### Напишите программу, которая будет рассчитывать какой день недели будет через n-нное количество дней, которые укажет пользователь 
 
 ```python
 
+from datetime import datetime
+from datetime import timedelta
+
+def main():
+  print(
+    f"Сегодня {datetime.today().day}"
+    f"\nДень недели - {datetime.today().isoweekday()}"
+    )
+
+n = int(input("Введите количество дней: "))
+
+today = datetime.today()
+result = today + timedelta(days=n)
+
+print(
+  f"Через {n} дней будет {result.date().day}"
+  f"\nДень недели - {result.isoweekday()}"
+)
+
+if __name__ == '__main__':
+  main()
 
 
 ```
@@ -192,9 +222,41 @@ print(f'корень равен: {math.sqrt(x)}, синус равен: {math.si
 
 
 ## Лабораторная работа №10
-### 
+### Напишите программу с использованием глобальных переменных, которая будет считать площадь треугольника или прямоугольника в зависимости от того, что выберет пользователь
 
 ```python
+
+from math import sqrt
+
+global result
+
+def rectangle():
+  global result
+  a = float(input("Введите длину: "))
+  b = float(input("Введите ширину: "))
+  result = a*b
+  return result
+
+def trianlge():
+  global result
+  a = float(input("Введите сторону: "))
+  b = float(input("Введите сторону: "))
+  c = float(input("Введите сторону: "))
+  p = a+b+c // 2
+  result = sqrt(p*(p-a)*(p-b)*(p-c))
+  return result
+
+
+decision = int(input("Прямоугольник - 1, Тругольник - 2: "))
+
+if decision == 1:
+    rectangle()
+else: 
+   trianlge()
+
+print(f'Площадь фигуры: {result}')
+
+
 
 
 

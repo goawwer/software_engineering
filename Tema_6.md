@@ -129,7 +129,9 @@ if __name__ == "__main__":
 
 ```python
 
-
+x = input().split()
+my_tuple = tuple(x)
+print(f"Список = {x}\nКортеж = {my_tuple}")
 
 ```
 
@@ -145,6 +147,17 @@ if __name__ == "__main__":
 
 ```python
 
+def remove_tumple():
+    x = input().split()
+    my_tuple = set(map(int,x))
+    b = int(input())
+    if b in my_tuple:
+        my_tuple.remove(b)
+        return tuple(my_tuple)
+    else:
+        return tuple(my_tuple)
+
+print(remove_tumple())
 
 
 ```

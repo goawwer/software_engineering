@@ -194,6 +194,24 @@ print(remove_tumple())
 
 ```python
 
+def enters_inf(*args):
+    info = input().split()
+    enter_tuple = list(map(int, info))
+    id = int(input())
+
+    if id in enter_tuple and enter_tuple.count(id) == 1:
+        enter_tuple = tuple(enter_tuple[enter_tuple.index(id):])
+        print(enter_tuple)
+    elif id in enter_tuple and enter_tuple.count(id) > 1:
+        new_tuple = tuple(enter_tuple[enter_tuple.index(id)+1:])
+        new_tuple = tuple(enter_tuple[enter_tuple.index(id):new_tuple.index(id) + enter_tuple.index(id) + 2])
+        print(new_tuple)
+
+    else:
+        enter_tuple.clear()
+        return print(tuple(enter_tuple))
+
+enters_inf()
 
 ```
 

@@ -174,7 +174,36 @@ print(remove_tumple())
 
 ```python
 
+def numpad_winner(n):
+  duplicate = []
+  counter = {}
+  new_array = []
 
+  if len(n) < 15:
+    print('Попробуйте ещё раз')
+  else: 
+    numbers = list(n)
+    for item in numbers:
+      if numbers.count(item) > 1:
+        duplicate.append(item)
+      else: 
+        pass
+    
+    for item in duplicate:
+      if item not in counter:
+        counter[item] = 0
+      counter[item] += 1
+
+  new_array = sorted(counter.items(), key=lambda x: x[1], reverse=True)
+  top_3 = new_array[:3]
+
+  top_3_sorted = sorted(top_3, key=lambda x: (-x[1], x[0]))
+
+  result = ', '.join([f"{key}: {value} раз(а)" for key, value in top_3_sorted])
+  print(result)
+
+
+numpad_winner(input())
 
 ```
 
@@ -223,10 +252,44 @@ enters_inf()
 
 
 ## Самостоятельная работа №5
-### 
+### Придумайте своё задание, где обязательно будут задействованы кортежи или списки.
+
+### В музее фиксируется количество посетителей каждый день в течение недели. Нужно написать программу, которая:
+Принимает на вход кортеж или список с количеством посетителей за каждый день недели (7 чисел, начиная с понедельника).
+
+### Выводит:
+
+### День недели с максимальной посещаемостью.
+### День недели с минимальной посещаемостью.
+### Среднее количество посетителей за неделю.
 
 ```python
 
+def week_info(*args):
+  days_of_week = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
+  attendance = input().split()
+  attendance = [int(item) for item in attendance]
+
+  if len(attendance) != 7:
+    print('Неверное количество дней, их должно быть 7')
+  else:
+    max_attendance = max(attendance)
+    max_day = days_of_week[attendance.index(max_attendance)]
+
+    min_attendance = min(attendance)
+    min_day = days_of_week[attendance.index(min_attendance)]
+
+
+    day_attendance = int(sum(attendance) / len(attendance))
+
+    print(
+    f"Максимальное количество посетителей: {max_attendance} в ({max_day})\n"
+    f"Минмальное количество посетителей: {min_attendance} в ({min_day})\n"
+    f"Среднее количество посетителей за всю неделю: {day_attendance}"
+    )
+
+
+week_info()
 
 ```
 

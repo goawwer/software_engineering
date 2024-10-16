@@ -214,6 +214,37 @@ with open('rows_300.csv', 'w', encoding='utf-8', newline='\r') as cf:
 
 ```python
 
+def number_of_words(file):
+    
+    words = []  
+    summa = []
+    word_count = {}  
+
+    with open(file, 'r', encoding='utf-8') as f:
+        for line in f:
+            line = line.lower().split()
+            len_of_line = len(line)
+            words.append((line, len_of_line))
+
+            for word in line:
+                if word in word_count:
+                    word_count[word] += 1  
+                else:
+                    word_count[word] = 1
+        
+        for i, v in words:
+            summa.append(v)
+        
+        print(f'Всего слов в статье: {sum(summa)}')
+
+    word_with_maximus = max(word_count, key=word_count.get)
+    maximus = max(word_count.values())
+
+    print(f'самое часто повторяющееся слово в тексте: {word_with_maximus}\nОно повторяется: {maximus} раз')
+
+
+number_of_words('article.txt')
+
 
 ```
 
@@ -226,11 +257,41 @@ with open('rows_300.csv', 'w', encoding='utf-8', newline='\r') as cf:
 
 
 ## Самостоятельная работа №2
-### 
+### У вас появилась потребность в ведении книги расходов, посмотрев все существующие варианты вы пришли к выводу, что вас ничего не устраивает и нужно все делать самому. Напишите программу для учета расходов. Программа должна позволять вводить информацию о рассходах, сохранять её в файл и выводить существующие данные в консоль. Ввод информации происходит через консоль. Результатом выполнения задачи будет: скриншот файла с учетом расходов, листинг кода, и вывод в консоль, с демонстрацией работоспособности программы.
 
 ```python
 
+import csv
+import os
 
+def create_expenses():
+  with open('expenses.txt', 'w', encoding='utf-8', newline= '\r') as cf:
+    writer = csv.writer(cf)
+    writer.writerow(['Название', ' Сумма'])
+    print(writer)
+
+    
+def write_expenses():
+  with open('expenses.txt', 'a', encoding='utf-8', newline= '\r') as wf:
+    adder = csv.writer(wf)
+    adder.writerow((input('Расход: '), input('Сумма: ')))
+
+def show_expenses():
+  with open('expenses.txt', 'r', encoding='utf-8') as rf:
+    print(rf.read())
+
+
+if __name__ == '__main__':
+  if not os.path.exists('expenses.txt'):
+        create_expenses()
+  while True:
+     first_dialoge = int(input('1: Внести расходы\n2: Показать расходы\n3: Выход\n'))
+     if first_dialoge == 1:
+      write_expenses()
+     elif first_dialoge == 2:
+      show_expenses()
+     else:
+      quit()
 
 ```
 

@@ -304,7 +304,21 @@ if __name__ == '__main__':
 
 
 ## Самостоятельная работа №3
-### 
+### Имеется файл input.txt с текстом на латинице. Напишите программу, которая выводит следующую статистику по тексту: количество букв латинского алфавита; число слов; число строк
+
+### Текст в файле: 
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex. 
+Complex is better than complicated.
+
+### Ожидаемый результат: 
+
+Input file contains:
+108 letters
+20 words
+4 lines
 
 ```python
 

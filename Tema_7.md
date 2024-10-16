@@ -152,16 +152,56 @@ print_docs("D:\Pictures")
 
 ```python
 
+def find_max(file):
+    lines = []
+
+    with open(file, encoding='utf-8') as f:
+        for line in f:
+            line = line.strip()  
+            len_of_line = len(line)
+            lines.append((line, len_of_line)) 
+
+    lines.sort(key=lambda x: x[1], reverse=True)
+
+    maximus = lines[0][1]
+
+    max_length_lines = [line for line, length in lines if length == maximus]
+
+    if len(max_length_lines) > 1:
+        print(f"Несколько строк одинаковой максимальной длины ({maximus} символов):")
+        for line in max_length_lines:
+            print(f"Строка: '{line}'")
+    else:
+        print(f"Максимальная строка: '{lines[0][0]}' Длина: {maximus}")
+
+find_max('base.txt')
 
 ```
 ### Результат.
 ![](pic/7.9.png)
 
 ## Лабораторная работа №10
-### 
+### Требуется создать csv-файл "rows_300.csv" со следующими столбцами: 
+
+### № - номер по порядку (от 1 до 300);
+### Секунда - текущая секунда на вашем ПК;
+### Микросекунда - текущая милисекунда на часах.
+
+Для наглядности на каждой терации цикла искуственно приостанавливайте скрипт на 0,01 секунды. 
 
 ```python
 
+import csv
+import datetime 
+import time 
+
+with open('rows_300.csv', 'w', encoding='utf-8', newline='\r') as cf:
+  writer = csv.writer(cf)
+  writer.writerow(['№', ' Секунда ', ' Микросекунда '])
+  for line in range(1, 301):
+    writer.writerow([line, datetime.datetime.now().second,
+                     datetime.datetime.now().microsecond])
+    time.sleep(0.01)
 
 ```
 ### Результат.
@@ -170,7 +210,7 @@ print_docs("D:\Pictures")
 
 
 ## Самостоятельная работа №1
-### 
+### Найдите в интернете любую статью(объем статьи не менее 200 слов), скопируйте её содержимое в файл и напишите программу, которая считает количество слов в текстовом файле и определит самое часто встречающееся слово. Результатом выполнения задачи будет: скриншот файла со статьей, листинг кода, и вывод в консоль, в котором будет указана вся необходимая информация. 
 
 ```python
 

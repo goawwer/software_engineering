@@ -352,14 +352,22 @@ with open('input.txt', 'r') as f:
 
 def censorship(taken_info):
     with open('input.txt', 'r') as f:
+        
         content = f.read()
         list_of_content = list(content.split())
-        taken_info = taken_info.lower()
+        x = taken_info.lower()
 
         for word in list_of_content:
-            taken_info = taken_info.replace(word, '*' * len(word))
-        print(taken_info)
+            x = x.replace(word, '*' * len(word))
 
+        new_line = ''
+
+        for i in range(len(taken_info)):
+            if x[i] == '*':
+                new_line += x[i]
+            else:
+                new_line += taken_info[i]
+        print(new_line)
 
 censorship(input())
 

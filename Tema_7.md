@@ -350,7 +350,18 @@ hello email python exam wor is
 
 ```python
 
+def censorship(taken_info):
+    with open('input.txt', 'r') as f:
+        content = f.read()
+        list_of_content = list(content.split())
+        taken_info = taken_info.lower()
 
+        for word in list_of_content:
+            taken_info = taken_info.replace(word, '*' * len(word))
+        print(taken_info)
+
+
+censorship(input())
 
 ```
 

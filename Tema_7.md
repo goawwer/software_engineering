@@ -375,11 +375,45 @@ censorship(input())
 ## Самостоятельная работа №5
 ### Самостоятельно придумайте и решите задачу, которая будет взаимодействовать с текстовым файлом.
 
-### 
+### Напишите программу, которая принимает на вход текстовый файл, содержащий строки текста. Программа должна вывести следующую информацию:
+
+### Количество слов в файле
+### Самое длинное слово
+### Самое короткое слово
+### Кличество строк, содержащих цифры
 
 ```python
 
+with open('info.txt', 'r', encoding='utf-8') as f:
 
+    maximus = []
+    c = 0
+
+    content = f.read()
+
+    number_of_words = len(content.split())
+
+    lines = content.split()
+
+    maximus.append((0,[len(word) for word in lines]))
+
+    for word in lines:
+        if word.isdigit():
+            c += 1
+
+    print(
+        f'Всего слов: {number_of_words}\n'
+        f'Самое длинное слово: "{max(lines, key=len)}", И его длина: {max(maximus[0][1])}\n'
+        f'Самое короткое слово: "{min(lines, key=len)}", И его длина: {min(maximus[0][1])}\n'
+        f'Количество строк с цифрами: {c}'
+    )
+
+"""
+Undercover is a Japanese brand
+founded by Jun Takahashi in 1993
+Taking influence from street culture
+punk and from its homeland
+"""
 
 ```
 
@@ -387,6 +421,7 @@ censorship(input())
 ### Результат.
 
 ![](pic/7.15.png)
+![](pic/7.15_2.png) - с файлом
 
 ## Вывод
 

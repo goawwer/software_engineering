@@ -74,7 +74,39 @@ my_car.drive() # Вызов функции drive класса Car
 
 ```python
 
+class Car:  # Создаем базовый класс
 
+    def __init__(self, creator, model):
+        self.creator = creator
+        self.model = model
+    """
+    Функция __init__ является конструктором класса, 
+        которая прописывает главные атрибуты
+    """
+
+class ElectricCar(Car): # Создаем класс и указываем родительский 
+  def __init__(self, creator, model, battery):
+
+    super().__init__(creator, model)
+
+    """
+    super().__init__(creator, model) вызывает конструктор родительского класса Car, 
+        чтобы инициализировать атрибуты creator и model.
+    """
+
+    self.battery = battery # прописываем дополнительный атрибут
+
+  def charge(self):
+    """
+    Метод charge выводит строку, которая сообщает, что машина заряжается, 
+        указывая ее марку, модель и емкость батареи.
+    """
+    print(f"Charging the {self.creator} {self.model} with {self.battery}") # вывод 
+
+  
+
+tesla_car = ElectricCar("Tesla", "Model S", 65) # передача в объект атрибуты класса ElectricCar
+tesla_car.charge() # Вызов функции charge
 
 ```
 ### Результат.
@@ -83,10 +115,33 @@ my_car.drive() # Вызов функции drive класса Car
 
 
 ## Лабораторная работа №4
-### 
+### Реализуйте инкапсуляцию для класса, созданного в первом задании. Создайте защищенный атрибут производителя и приватный атрибут модели. Вызовите защищенный атрибут и заставьте машину поехать. Напишите комментарии для кода, объясняющие его работу. Результатом выполнения задания будет листинг кода с комментариями и получившийся вывод в консоль.
 
 ```python
 
+class Car:  # Создаем класс
+
+    def __init__(self, creator, model):
+        self._creator = creator # защищенный атрибут 
+        self.__model = model # приватный атрибут 
+    """
+    Функция __init__ является конструктором класса, 
+        которая прописывает главные атрибуты
+    """
+
+    def drive(self):
+      """
+      Метод drive выводит строку, которая сообщает, что машина едет, 
+          указывая ее марку и модель.
+      """
+      print(f"Driving the {self._creator} {self.__model}") # вывод 
+
+  
+
+tesla_car = Car("Tesla", "Model S") 
+print(tesla_car._creator) # доступ к защищенному атрибуту
+# print(tesla_car.__model) Ошибка, так как этот атрибут является приватным
+tesla_car.drive() # Вызов функции charge
 
 ```
 ### Результат.
@@ -95,9 +150,38 @@ my_car.drive() # Вызов функции drive класса Car
 
 
 ## Самостоятельная работа №5
-### 
+### Реализуйте полиморфизм создав основной (общий) класс “Shape”, а также еще два класса “Rectangle” и “Circle”. Внутри последних двух классов реализуйте методы для подсчета площади фигуры. После этого создайте массив с фигурами, поместите туда круг и прямоугольник, затем при помощи цикла выведите их площади. Напишите комментарии для кода, объясняющие его работу. Результатом выполнения задания будет листинг кода с комментариями и получившийся вывод в консоль.
 
 ```python
+
+class Shape:
+  def area(self):
+    pass
+
+
+class Rectangle(Shape):
+  def __init__(self, a, b):
+    self.a = a
+    self.b = b
+  
+  def area(self):
+    return self.a * self.b
+  
+
+class Circle(Shape):
+  def __init__(self, r):
+    self.r = r
+  
+
+  def area(self):
+    return 3.14 * self.r * self.r
+  
+
+shapes = [Rectangle(3,4), Circle(4)]
+
+for shape in shapes:
+  print(shape.area())
+
 
 
 ```

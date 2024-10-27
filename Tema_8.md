@@ -294,6 +294,46 @@ someones_home.show_appeal()
 
 ```python
 
+class Home:
+  def __init__(self, floor, flat, number_of_rooms, fio):
+    self.floor = floor 
+    self.flat = flat 
+    self.number_of_rooms = number_of_rooms
+    self.__fio = fio
+
+
+  def get_fio(self):
+    return self.__fio
+  
+  def set_fio(self, fio):
+    self.__fio = fio
+
+class JKH(Home):
+  def __init__(self, floor, flat, number_of_rooms, fio):
+    super().__init__(floor, flat, number_of_rooms, fio)
+
+  def make_appeal(self, ask):
+    self.ask = ask
+
+  def show_appeal(self):
+    print(
+        f"Квартира: <{self.flat}>, находящаяся на: <{self.floor}> этаже и имеющая {self.number_of_rooms} комнаты(у)\n"
+        f"Задает следующий вопрос: {self.ask}"
+        )
+    
+
+
+someones_home = JKH(
+    input("Напишите ваш этаж: "),
+    input("Напишите № Вашей квартиры: "),
+    input("Напишите количество комнат: "),
+    input("Ваше ФИО: ")
+    )
+
+someones_home.make_appeal(input("Напишите ваш запрос: "))
+someones_home.show_appeal()
+
+# print(someones_home.get_fio()) - показывает приватный атрибут
 
 ```
 
@@ -310,6 +350,41 @@ someones_home.show_appeal()
 
 ```python
 
+class Subscription:
+  def pricing(self):
+    pass 
+
+
+class Monthly:
+  def __init__(self, a, b):
+    self.a = a
+    self.b = b 
+
+  def pricing(self):
+    return self.a * self.b
+  
+
+class Yealy:
+  def __init__(self, a):
+    self.a = a
+
+  def pricing(self):
+    return self.a * int(input("Введите цену, которую платите ежегодно за 1 продукт: "))
+
+
+class Forever:
+  def __init__(self, a):
+    self.a = a
+
+  def pricing(self):
+    return self.a * int(input("Введите цену, которую заплатили разово за 1 продукт: "))
+
+
+
+subscriptions = [Monthly(2,3), Yealy(5), Forever(2)] # 2 подписки на 3 месяца - сумма; 5 годовых подписок (цену надо указывать) - сумма; 2 подписки навсегда (их цена) - сумма.
+
+for sub in subscriptions:
+  print(sub.pricing())
 
 ```
 

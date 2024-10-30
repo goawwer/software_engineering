@@ -158,7 +158,26 @@ print(f'Моя кошка это {my_cat.className} и она говорит <{m
 
 ```python
 
+class Russian: 
 
+  @staticmethod
+  def greeting():
+    print('Привет')
+
+
+class English: 
+
+  @staticmethod
+  def greeting():
+    print('Hello')
+
+
+def greet(language):
+  language.greeting()
+
+
+greet(Russian())
+greet(English())
 
 ```
 

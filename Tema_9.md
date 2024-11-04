@@ -149,15 +149,6 @@ print(f'Моя кошка это {my_cat.className} и она говорит <{m
 
 ```python
 
-```
-### Результат.
-![](pic/9.5.png)
-
-## Самостоятельная работа 1
-### 
-
-```python
-
 class Russian: 
 
   @staticmethod
@@ -178,6 +169,18 @@ def greet(language):
 
 greet(Russian())
 greet(English())
+
+
+```
+### Результат.
+![](pic/9.5.png)
+
+## Самостоятельная работа 1
+### 
+
+```python
+
+
 
 ```
 

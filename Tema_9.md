@@ -180,17 +180,137 @@ greet(English())
 
 ```python
 
+class Tomato:
+    states = ["Семена", "Саженец", "Зеленый", "Спелый"] # Статический список, содержащий стадии созревания помидора
+
+    def __init__(self, index):
+        # Динамические свойства: 
+        # _index - индекс томата, передается параметром
+        # _state - текущее состояние томата, инициализируется первым значением из states
+        self._index = index  # публичное свойство
+        self._state = self.states[0]  # текущее состояние, инициализируется первым элементом
+
+    def grow(self):
+        """
+        Функция, переводящая томат на следующую стадию созревания, путем сдвига индекса списка стадий
+        """
+
+        current_index = self.states.index(self._state)
+        if current_index < len(self.states) - 1:
+            self._state = self.states[current_index + 1]
+
+    def is_ripe(self):
+        """
+        Функция, проверяющая, что томат созрел, путем проверки принадлежности к последней стадии из списка через индекс
+        """
+        if self._state == self.states[-1]:
+            print('Томат созрел')
+            return self._state == self.states[-1]
+        else:
+            print('Ещё незрелый')
+
+
+class TomatoBush:
+    def __init__(self, number_of_tomatoes):
+        
+        self.tomatoes = [Tomato(i) for i in range(number_of_tomatoes)] # создание списка томатов
+
+    def grow_all(self):
+        """
+        Функция, переводящая все томаты на следующий этап созревания
+        """
+        for tomato in self.tomatoes:
+            tomato.grow()
+
+    def all_are_ripe(self):
+        """
+        Возвращает True, если все томаты стали спелыми
+        """
+        return all(tomato.is_ripe() for tomato in self.tomatoes)
+
+    def give_away_all(self):
+        """
+        Очищает список томатов после сбора урожая
+        """
+        self.tomatoes.clear()
+
+
+class Gardener:
+    def __init__(self, name, plant):
+        # Динамические свойства:
+        # name - имя садовода, передается параметром
+        # _plant - объект класса TomatoBush, передается параметром
+        self.name = name  # публичное свойство
+        self._plant = plant  # объект класса TomatoBush
+
+    def work(self):
+        """
+        Функция, заставляющая садовника работать, следовательно растения перехдят на следующую стадию созревания
+        """
+        self._plant.grow_all()
+
+    def harvest(self):
+        """
+        Фукнция, проверяющая все ли плоды созрели
+        """
+        if self._plant.all_are_ripe():
+            print(f"{self.name} собирает урожай!")
+            self._plant.give_away_all()
+        else:
+            print(f"{self.name}, ваши помидоры еще не созрели!")
+
+    @staticmethod
+    def knowledge_base():
+        """
+        Выводит в консоль справку по садоводству
+        """
+
+        print("Справка по садоводству:")
+        print("1. Поливайте растения регулярно.")
+        print("2. Убедитесь, что у них достаточно солнечного света.")
+        print("3. Удаляйте больные листья.")
+        print("4. Удобрение поможет ускорить рост.")
+
+
+
+if __name__ == "__main__":
+    bush = TomatoBush(5)  
+    gardener = Gardener("Vadim", bush) 
+    gardener.work()
+    gardener.harvest()
+    gardener.work()
+    gardener.work()
+    gardener.harvest()
+
 
 
 ```
 
 ### Результат.
 
-![](pic/9.11.png)
+### Тесты:
+
+### Вызовите справку по садоводству:
+![](pic/9.6_1.png)
+
+### Создайте объекты классов TomatoBush и Gardener:
+![](pic/9.6_2.png)
+
+### Используя объект класса Gardener, поухаживайте за кустом с помидорами:
+![](pic/9.6_3.png)
+
+### Попробуйте собрать урожай, когда томаты еще не дозрели. Продолжайте ухаживать за ними
+![](pic/9.6_4.png)
+
+### Соберите урожай:
+![](pic/9.6_5.png)
+
 
 ## Вывод
 
+Данная задача позволила мне притронуться к настоящему ООП на python. Я последовательно самостоятельно разобрался как взаимодействуют между собой различные классы на практическом примере.
 
 ## Общие выводы по теме
 
+В данной теме я не только повторил знания из предыдуще
 
